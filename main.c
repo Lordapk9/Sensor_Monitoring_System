@@ -88,11 +88,9 @@ void* data_manager(void* arg) {
                 double temp = shared->running_temps[sensor_id];
                 
                 if (temp < 18.0) {
-                    write_log("Sensor node %d reports it's too cold (running avg temperature = %.1f)", 
-                             sensor_id, temp);
+                    write_log("Sensor node %d reports it's too cold (running avg temperature = %.1f)", sensor_id, temp);
                 } else if (temp > 25.0) {
-                    write_log("Sensor node %d reports it's too hot (running avg temperature = %.1f)", 
-                             sensor_id, temp);
+                    write_log("Sensor node %d reports it's too hot (running avg temperature = %.1f)", sensor_id, temp);
                 }
             }
         }
