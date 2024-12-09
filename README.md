@@ -1,3 +1,14 @@
+CÁCH HOẠT ĐỘNG CHƯƠNG TRÌNH
+
+make để chạy chương trình
+- ./server port để chạy server
+- ./sensor_node port để chạy sensor node
+- file log: gateway.log 
+- file fifo: logFifo
+- file database: sensor_data.db
+- 1. sqlite3 sensor_data.db
+- 2. SELECT * FROM sensor_data;
+
 # Các Yêu Cầu Tối Thiểu
 
 ## Yêu cầu 1
