@@ -1,15 +1,29 @@
 CC = gcc
-CFLAGS = -Wall -pthread
-TARGET = gateway
-SRCS = main.c
+CFLAGS = -Wall -Wextra -pthread
+LDFLAGS = -pthread -lsqlite3
 
-$(TARGET): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(TARGET)
+# Targets
+SERVER = server
+SENSOR = sensor_node
 
-.PHONY: run clean
+all: $(SERVER) $(SENSOR)
 
-run: $(TARGET)
-	./$(TARGET)
+# Server
+$(SERVER): main.o
+	$(CC) main.o -o $(SERVER) $(LDFLAGS)
+
+# Sensor Node
+$(SENSOR): sensor_node.o
+	$(CC) sensor_node.o -o $(SENSOR)
+
+# Object files
+main.o: main.c
+	$(CC) $(CFLAGS) -c main.c
+
+sensor_node.o: sensor_node.c
+	$(CC) $(CFLAGS) -c sensor_node.c
 
 clean:
-	rm -f $(TARGET) logFifo gateway.log
+	rm -f *.o $(SERVER) $(SENSOR) gateway.log logFifo sensor_data.db
+
+.PHONY: all clean
