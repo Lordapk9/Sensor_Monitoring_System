@@ -1,4 +1,4 @@
-CÁCH HOẠT ĐỘNG CHƯƠNG TRÌNH
+# CÁCH HOẠT ĐỘNG CHƯƠNG TRÌNH
 
 make để chạy chương trình
 - ./server port để chạy server
