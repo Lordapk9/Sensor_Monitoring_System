@@ -9,6 +9,22 @@ make để chạy chương trình
 - 1. sqlite3 sensor_data.db
 - 2. SELECT * FROM sensor_data;
 
+# Tổng Quan Hệ Thống
+Hệ thống giám sát cảm biến bao gồm các nút cảm biến đo nhiệt độ phòng,cổng cảm biến thu thập tất cả dữ liệu cảm biến từ các nút cảm biến và cơ sở dữ liệu SQL để
+lưu trữ tất cả dữ liệu cảm biến được xử lý bởi cổng cảm biến. Nút cảm biến sử dụng TCP riêng kết nối để truyền dữ liệu cảm biến đến cổng cảm biến. Cơ sở dữ liệu SQL là SQLite. Hệ thống đầy đủ được mô tả dưới đây.
+
+![image](https://github.com/user-attachments/assets/cc60065d-1420-446e-a9f0-d8093b6ed496)
+
+
+Cổng cảm biến có thể không đảm nhận số lượng cảm biến tối đa khi khởi động. Trên thực tế, số lượng cảm biến kết nối với cổng cảm biến không cố định và có thể thay đổi theo thời gian. 
+Làm việc với các nút cảm biến nhúng thực không phải là một lựa chọn cho nhiệm vụ này. Vì thế, các nút cảm biến sẽ được mô phỏng trong phần mềm
+
+## Sensor Gateway (Cổng cảm biến)
+Thiết kế chi tiết hơn của cổng cảm biến được mô tả bên dưới. Trong phần sau, chúng tôi sẽ thảo luận chi tiết hơn về các yêu cầu tối thiểu của cả hai quy trình.
+
+![image](https://github.com/user-attachments/assets/60711569-562f-45cb-aa5d-3ce87304b015)
+
+
 # Các Yêu Cầu Tối Thiểu
 
 ## Yêu cầu 1
