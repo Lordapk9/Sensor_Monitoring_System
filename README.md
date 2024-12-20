@@ -1,3 +1,4 @@
+Link bài viết: https://nvh1410.hashnode.dev/sensor-monitoring-system
 # CÁCH HOẠT ĐỘNG CHƯƠNG TRÌNH
 
 make để chạy chương trình
