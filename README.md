@@ -1,15 +1,62 @@
-Link bài viết: https://nvh1410.hashnode.dev/sensor-monitoring-system
+Link bài viết: https://nvh1410.hashnode.dev/sensor-monitoring-system (coming soon)
+
 # CÁCH HOẠT ĐỘNG CHƯƠNG TRÌNH
-
-make để chạy chương trình
-- ./server port để chạy server
-- ./sensor_node port để chạy sensor node
-- file log: gateway.log 
-- file fifo: logFifo
-- file database: sensor_data.db
-- 1. sqlite3 sensor_data.db
-- 2. SELECT * FROM sensor_data;
-
+Đây là cấu trúc Project:
+```bash
+.
+├── bin
+│   ├── sensor_node
+│   └── server
+├── inc
+│   ├── connection_manager.h
+│   ├── log.h
+│   ├── sensor_handler.h
+│   ├── shared_data.h
+│   ├── socket_utils.h
+│   └── storage_manager.h
+├── lib
+│   └── libsocket_utils.so
+├── main
+├── main.c
+├── main.o
+├── Makefile
+├── obj
+│   ├── connection_manager.o
+│   ├── log.o
+│   ├── sensor_handler.o
+│   ├── socket_utils.o
+│   └── storage_manager.o
+├── README.md
+├── sensor_node.c
+├── sensor_node.o
+└── src
+    ├── connection_manager.c
+    ├── log.c
+    ├── sensor_handler.c
+    ├── socket_utils.c
+    └── storage_manager.c
+```
+- ```make all``` để chạy chương trình
+- ```./bin/server``` port để chạy server
+- ```./bin/sensor_node``` để chạy sensor node
+- file log: ```gateway.log``` 
+- file fifo: ```logFifo```
+- file database: ```sensor_data.db```
+- 1. ```sqlite3 sensor_data.db```
+- 2. ```SELECT * FROM sensor_data;```
+# KẾT QUẢ
+- ```make all```
+![alt text](image.png)
+- ```./bin/server```
+![alt text](image-1.png)
+- ```./bin/sensor_node```
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+- ```cat gateway.log```
+![alt text](image-5.png)
+- ```SQL```
+![alt text](image-7.png)
 # Tổng Quan Hệ Thống
 Hệ thống giám sát cảm biến bao gồm các nút cảm biến đo nhiệt độ phòng,cổng cảm biến thu thập tất cả dữ liệu cảm biến từ các nút cảm biến và cơ sở dữ liệu SQL để
 lưu trữ tất cả dữ liệu cảm biến được xử lý bởi cổng cảm biến. Nút cảm biến sử dụng TCP riêng kết nối để truyền dữ liệu cảm biến đến cổng cảm biến. Cơ sở dữ liệu SQL là SQLite. Hệ thống đầy đủ được mô tả dưới đây.
@@ -24,7 +71,6 @@ Làm việc với các nút cảm biến nhúng thực không phải là một l
 Thiết kế chi tiết hơn của cổng cảm biến được mô tả bên dưới. Trong phần sau, chúng tôi sẽ thảo luận chi tiết hơn về các yêu cầu tối thiểu của cả hai quy trình.
 
 ![image](https://github.com/user-attachments/assets/60711569-562f-45cb-aa5d-3ce87304b015)
-
 
 # Các Yêu Cầu Tối Thiểu
 

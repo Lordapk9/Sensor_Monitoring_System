@@ -7,7 +7,7 @@
 #include <time.h>
 
 #define BUFF_SIZE 1024
-#define SERVER_IP "192.168.121.134"
+#define SERVER_IP "YOUR_SERVER_IP" // Replace with the actual server IP address
 
 typedef struct
 {
@@ -34,8 +34,8 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    int sensor_id = atoi(argv[1]);
-    int server_port = atoi(argv[2]);
+    int sensor_id = atoi(argv[1]); // Convert sensor ID from string to integer
+    int server_port = atoi(argv[2]); // Convert server port from string to integer
 
     // Create socket
     int sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -70,11 +70,12 @@ int main(int argc, char *argv[])
     char id_msg[10];
     sprintf(id_msg, "ID:%d", sensor_id);
     send(sock, id_msg, strlen(id_msg), 0);
+    sleep(1);
 
     // Main loop - send sensor data
     while (1)
     {
-        SensorData data = generate_sensor_data(sensor_id);
+        SensorData data = generate_sensor_data(sensor_id); // Generate random sensor data
 
         char message[BUFF_SIZE];
         sprintf(message, "SENSOR:%d,TEMP:%.2f,HUM:%.2f",
@@ -92,6 +93,6 @@ int main(int argc, char *argv[])
         sleep(5); // Send data every 5 seconds
     }
 
-    close(sock);
+    close(sock); // Close the socket
     return 0;
 }
