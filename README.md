@@ -46,17 +46,17 @@ Link bài viết: https://nvh1410.hashnode.dev/sensor-monitoring-system (coming 
 - 2. ```SELECT * FROM sensor_data;```
 # KẾT QUẢ
 - ```make all```
-![alt text](image.png)
+![alt text](image/image.png) 
 - ```./bin/server```
-![alt text](image-1.png)
+![alt text](image/image-1.png)
 - ```./bin/sensor_node```
-![alt text](image-2.png)
-![alt text](image-3.png)
-![alt text](image-4.png)
+![alt text](image/image-2.png)
+![alt text](image/image-3.png)
+![alt text](image/image-4.png)
 - ```cat gateway.log```
-![alt text](image-5.png)
+![alt text](image/image-5.png)
 - ```SQL```
-![alt text](image-7.png)
+![alt text](image/image-7.png)
 # Tổng Quan Hệ Thống
 Hệ thống giám sát cảm biến bao gồm các nút cảm biến đo nhiệt độ phòng,cổng cảm biến thu thập tất cả dữ liệu cảm biến từ các nút cảm biến và cơ sở dữ liệu SQL để
 lưu trữ tất cả dữ liệu cảm biến được xử lý bởi cổng cảm biến. Nút cảm biến sử dụng TCP riêng kết nối để truyền dữ liệu cảm biến đến cổng cảm biến. Cơ sở dữ liệu SQL là SQLite. Hệ thống đầy đủ được mô tả dưới đây.
